@@ -4,5 +4,10 @@
   "env": {
     "NEXTAUTH_URL": "https://your-domain.vercel.app",
     "NODE_ENV": "production"
+  },
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
   }
 } 
