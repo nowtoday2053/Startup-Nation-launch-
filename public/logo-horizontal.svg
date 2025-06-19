@@ -1,0 +1,66 @@
+<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Icon -->
+  <g transform="translate(10, 20)">
+    <!-- Rocket/Growth Symbol -->
+    <path d="M22 14L22 30C22 32.2091 20.2091 34 18 34L14 34C11.7909 34 10 32.2091 10 30L10 14C10 9.58172 13.5817 6 18 6L18 6C20.2091 6 22 7.79086 22 10L22 14Z" fill="url(#gradient1)"/>
+    
+    <!-- Rocket Fins -->
+    <path d="M10 20L6 24C5.44772 24 5 23.5523 5 23L5 21C5 20.4477 5.44772 20 6 20L10 20Z" fill="url(#gradient2)"/>
+    <path d="M22 20L26 24C26.5523 24 27 23.5523 27 23L27 21C27 20.4477 26.5523 20 26 20L22 20Z" fill="url(#gradient2)"/>
+    
+    <!-- Rocket Window -->
+    <circle cx="16" cy="16" r="3" fill="#FDFDFD" opacity="0.9"/>
+    <circle cx="16" cy="16" r="1.5" fill="#1968FF"/>
+    
+    <!-- Flame/Trail -->
+    <path d="M16 34L14 40C15.3333 39.3333 16.6667 39.3333 18 40L16 34Z" fill="url(#gradient3)"/>
+    
+    <!-- Nation/Community Dots -->
+    <circle cx="8" cy="10" r="1.5" fill="#1968FF" opacity="0.6"/>
+    <circle cx="24" cy="12" r="1.5" fill="#1968FF" opacity="0.6"/>
+    <circle cx="6" cy="16" r="1" fill="#1968FF" opacity="0.4"/>
+    <circle cx="26" cy="18" r="1" fill="#1968FF" opacity="0.4"/>
+    <circle cx="4" cy="22" r="1" fill="#1968FF" opacity="0.3"/>
+    <circle cx="28" cy="24" r="1" fill="#1968FF" opacity="0.3"/>
+  </g>
+  
+  <!-- Text - Horizontal Layout -->
+  <g transform="translate(60, 20)">
+    <!-- "Startup Nation" in one line -->
+    <text x="0" y="30" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="32" fill="url(#textGradient)">
+      <tspan fill="url(#textGradient)">Startup</tspan>
+      <tspan fill="#C8C8C8" dx="8">Nation</tspan>
+    </text>
+    
+    <!-- Tagline -->
+    <text x="0" y="50" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="400" font-size="14" fill="#C8C8C8" opacity="0.8">Where Founders Learn, Build &amp; Grow Together</text>
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <!-- Main rocket gradient -->
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1968FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1968FF;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Fins gradient -->
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1968FF;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#1968FF;stop-opacity:0.5" />
+    </linearGradient>
+    
+    <!-- Flame gradient -->
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#FFE66D;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1968FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1968FF;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+</svg> 
