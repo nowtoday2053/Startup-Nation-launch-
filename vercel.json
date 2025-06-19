@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
+  "env": {
+    "NEXTAUTH_URL": "https://your-domain.vercel.app",
+    "NODE_ENV": "production"
+  }
+} 
