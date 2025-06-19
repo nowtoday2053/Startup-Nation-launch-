@@ -14,7 +14,6 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    signUp: "/register",
   },
   events: {
     async signIn({ user, account, profile }) {
@@ -82,9 +81,8 @@ export const authOptions: NextAuthOptions = {
           id: user.id,
           email: user.email,
           name: user.name,
-          username: user.username,
-          role: user.role,
-        }
+          image: user.image,
+        } as any
       }
     }),
   ],
@@ -93,14 +91,14 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         // Ensure session.user exists before setting properties
         if (!session.user) {
-          session.user = {}
+          session.user = {} as any
         }
-        session.user.id = token.id
-        session.user.name = token.name
-        session.user.email = token.email
-        session.user.image = token.picture
-        session.user.username = token.username
-        session.user.role = token.role
+        ;(session.user as any).id = token.id
+        ;(session.user as any).name = token.name
+        ;(session.user as any).email = token.email
+        ;(session.user as any).image = token.picture
+        ;(session.user as any).username = token.username
+        ;(session.user as any).role = token.role
       }
       return session
     },
@@ -109,9 +107,9 @@ export const authOptions: NextAuthOptions = {
       
       if (user) {
         // First time sign in, user object is available
-        token.id = user.id
-        token.username = user.username
-        token.role = user.role
+        ;(token as any).id = user.id
+        ;(token as any).username = user.username
+        ;(token as any).role = user.role
         return token
       }
 
@@ -124,9 +122,9 @@ export const authOptions: NextAuthOptions = {
         })
 
         if (dbUser) {
-          token.id = dbUser.id
-          token.username = dbUser.username
-          token.role = dbUser.role
+          ;(token as any).id = dbUser.id
+          ;(token as any).username = dbUser.username
+          ;(token as any).role = dbUser.role
         }
       }
 
@@ -185,7 +183,7 @@ export const authOptions: NextAuthOptions = {
       // Always return true for successful sign-ins
       return true
     },
-    async redirect({ url, baseUrl, token }) {
+    async redirect({ url, baseUrl }) {
       console.log(`Redirect called with url: ${url}, baseUrl: ${baseUrl}`)
       
       // If it's a relative URL, prepend the base URL

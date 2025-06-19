@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, PostType } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
@@ -33,7 +33,7 @@ Create valuable content that educates your target audience and establishes your 
 
 **3. Customer Success**
 Invest heavily in ensuring your customers achieve their desired outcomes with your product.`,
-      type: "RESOURCE",
+      type: PostType.RESOURCE,
       tags: ["growth", "saas", "strategy", "marketing"],
       slug: "ultimate-saas-growth-playbook-" + Date.now(),
       authorId: sampleUser.id,
@@ -70,7 +70,7 @@ Ahead of my time but way behind on execution. I spent too much time perfecting t
 ## The Success
 
 Company #4 was different. I spent 3 months just talking to potential customers before writing a single line of code. I built the minimum viable product and got paying customers within 6 weeks.`,
-      type: "STORY",
+      type: PostType.STORY,
       tags: ["failure", "lessons", "startup", "entrepreneurship"],
       slug: "failed-startups-before-success-" + Date.now(),
       authorId: sampleUser.id,
@@ -93,7 +93,7 @@ A well-executed Product Hunt launch can drive thousands of users to your product
 ## 3. Partnership Marketing
 
 Strategic partnerships can unlock new distribution channels and customer segments that would be expensive to reach through paid advertising.`,
-      type: "STRATEGY", 
+      type: PostType.STRATEGY, 
       tags: ["growth", "marketing", "strategy", "2024"],
       slug: "growth-hacks-that-work-2024-" + Date.now(),
       authorId: sampleUser.id,
