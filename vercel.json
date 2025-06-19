@@ -1,13 +1,14 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "prisma generate && pnpm build",
   "framework": "nextjs",
-  "env": {
-    "NEXTAUTH_URL": "https://your-domain.vercel.app",
-    "NODE_ENV": "production"
-  },
+  "installCommand": "pnpm install",
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
     }
+  },
+  "regions": ["cle1"],
+  "env": {
+    "NODE_ENV": "production"
   }
 } 
