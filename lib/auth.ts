@@ -186,6 +186,11 @@ export const authOptions: NextAuthOptions = {
     async redirect({ url, baseUrl }) {
       console.log(`Redirect called with url: ${url}, baseUrl: ${baseUrl}`)
       
+      // Handles sign-out redirect
+      if (url === baseUrl) {
+        return baseUrl
+      }
+      
       // If it's a relative URL, prepend the base URL
       if (url.startsWith("/")) {
         const redirectUrl = `${baseUrl}${url}`
@@ -199,7 +204,7 @@ export const authOptions: NextAuthOptions = {
         return url
       }
       
-      // For OAuth redirects, go directly to feed
+      // For external URLs or fallback, redirect to feed
       const defaultUrl = `${baseUrl}/feed`
       console.log(`Default redirect to: ${defaultUrl}`)
       return defaultUrl

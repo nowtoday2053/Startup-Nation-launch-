@@ -22,13 +22,47 @@ export default function LoginPage() {
   const handleGitHubSignIn = async () => {
     setIsLoading(true)
     try {
-      // Use direct redirect for OAuth providers instead of manual handling
-      await signIn("github", { 
-        callbackUrl: "/feed"
+      // Use consistent redirect handling for OAuth providers
+      const result = await signIn("github", { 
+        redirect: false
       })
-      // No need for manual redirect here - NextAuth handles it
+      
+      if (result?.error) {
+        throw new Error(result.error)
+      }
+      
+      if (result?.ok) {
+        // Check onboarding status and redirect accordingly
+        setTimeout(async () => {
+          try {
+            const onboardingResponse = await fetch("/api/users/onboarding", {
+              credentials: 'include'
+            })
+            
+            if (onboardingResponse.ok) {
+              const onboardingData = await onboardingResponse.json()
+              
+              if (onboardingData.user?.onboardingCompleted) {
+                router.push("/feed")
+              } else {
+                router.push("/onboarding")
+              }
+            } else {
+              router.push("/onboarding")
+            }
+          } catch (error) {
+            console.error("Error checking onboarding:", error)
+            router.push("/feed")
+          }
+        }, 1000)
+      }
     } catch (error) {
-      console.error("Sign in error:", error)
+      console.error("GitHub sign in error:", error)
+      toast({
+        title: "Sign in failed",
+        description: "Failed to sign in with GitHub. Please try again.",
+        variant: "destructive",
+      })
       setIsLoading(false)
     }
   }
@@ -37,11 +71,40 @@ export default function LoginPage() {
     setIsLoading(true)
     try {
       console.log("Attempting Google sign in...")
-      // For existing users, bypass onboarding and go directly to feed
-      await signIn("google", { 
-        callbackUrl: window.location.origin + "/feed",
-        redirect: true
+      // Remove the hardcoded callbackUrl and let NextAuth handle the redirect
+      const result = await signIn("google", { 
+        redirect: false // Don't redirect immediately, handle it manually
       })
+      
+      if (result?.error) {
+        throw new Error(result.error)
+      }
+      
+      if (result?.ok) {
+        // Check onboarding status and redirect accordingly
+        setTimeout(async () => {
+          try {
+            const onboardingResponse = await fetch("/api/users/onboarding", {
+              credentials: 'include'
+            })
+            
+            if (onboardingResponse.ok) {
+              const onboardingData = await onboardingResponse.json()
+              
+              if (onboardingData.user?.onboardingCompleted) {
+                router.push("/feed")
+              } else {
+                router.push("/onboarding")
+              }
+            } else {
+              router.push("/onboarding")
+            }
+          } catch (error) {
+            console.error("Error checking onboarding:", error)
+            router.push("/feed")
+          }
+        }, 1000)
+      }
     } catch (error) {
       console.error("Google sign in error:", error)
       toast({
